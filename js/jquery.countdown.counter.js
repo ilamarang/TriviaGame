@@ -88,7 +88,7 @@ var switchItem = function(itemNumber, digit, capacity) {
 };
 
 var counterFinished = function() {
-    
+     $('#nextButton').trigger('click');
 };
 
 var rollToEnd = function() {
@@ -96,8 +96,14 @@ var rollToEnd = function() {
 
         var token = "#counter_item" + itemNumber + " :first-child";
         var $element = $(token).next(); // second child
-
-        $element.after('<div class="digit digit_cherry" style="margin-top: 55px"></div>');
+        if(itemNumber == 3) {
+            $element.after('<div class="digit digit_colon" style="margin-top: 55px"></div>');
+        } 
+        else
+        {
+            $element.after('<div class="digit digit0" style="margin-top: 55px"></div>');    
+        }
+        
 
         var $newElement = $element.next();
         $element.animate({
