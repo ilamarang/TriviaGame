@@ -88,10 +88,11 @@ var switchItem = function(itemNumber, digit, capacity) {
 };
 
 var counterFinished = function() {
-     $('#nextButton').trigger('click');
+
+    // $('#nextButton').trigger('click');
 };
 
-var rollToEnd = function() {
+var rollToEnd = function(triggerEvent) {
     for (var itemNumber = 1; itemNumber <= 5; itemNumber++) {
 
         var token = "#counter_item" + itemNumber + " :first-child";
@@ -114,7 +115,12 @@ var rollToEnd = function() {
             "margin-top": 0
         }, 500);
     }
-    $.timeout(counterFinished, 1000);
+    $.timeout(counterFinished, 1);
+    if(triggerEvent) {
+
+
+        handleTimeOut();
+    }
 };
 
 var tick = function()
@@ -141,14 +147,13 @@ var tick = function()
     if (getTicksLeft() === 0) {
         clearInterval(gIntervalToken);
         gIntervalToken = null;
-        $.timeout(rollToEnd, 1000);
+        $.timeout(rollToEnd(true), 1);
     }
 };
 window.CounterFreeze = function() {
     
-
-    clearInterval(gIntervalToken);
-    gIntervalToken = null;
+    gTicksLeft = 0;
+    $.timeout(rollToEnd(false), 1);
     
     
     };

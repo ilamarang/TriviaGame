@@ -178,16 +178,16 @@ var questionList = {
 
 var initialize = function() {
 
+    $("#questionPanel h3").html("Welcome to an Awesome Trivia!");
+
     questionCounter = 0;
-    arrayCount = 0
+    arrayCount = 0;
+    currentUserChoice = "";
 
-
-    for (var key in questionList) {
-        
-        if (questionList.hasOwnProperty(key)) {
-            displayQuizTopics(questionList[key]);
-        }
-    }
+    $("#timerPanel").hide();    
+    $("#nextButton").hide();
+    $("#restartButton").hide();
+    
 
 };
 
@@ -247,40 +247,42 @@ var verifyAnswer = function() {
    {
     console.log("Better Luck Next Time");
    }
-    
-    
+       
 
+
+}
+
+var handleTimeOut = function() {
+    console.log("Timer Timed out Event")
+
+    $('#nextButton').trigger('click');
 
 }
     
 
 $(document).ready(function() {
-    $("#previousButton").on("click", function() {
 
 
-    });
-
-    $("#startButton").on("click", function() {
-        $(this).hide();
-        $("#quizTopics").hide();
-        $('#nextButton').trigger('click');
-        $("#nextButton").animate({
-            "opacity": "show",
-            top: "150"
-        }, 1000);
+    $("#restartButton").on("click", function() {
+      
+      initialize();
+      $("#quizTopics").show();  
     });
 
 
-    $("#timerPanel").hide();
-    $("#previousButton").hide();
-    $("#nextButton").hide();
-    $("#startButton").hide();
+    
 
 
     initialize();
 
+    for (var key in questionList) {
+        
+        if (questionList.hasOwnProperty(key)) {
+            displayQuizTopics(questionList[key]);
+        }
+    }
 
-    $("#questionPanel h3").html("Welcome to an Awesome Trivia!");
+    
 
     $(".img-responsive").on("click", function() {
 
@@ -317,7 +319,7 @@ $("#nextButton").on("click", function() {
         
         
         CounterFreeze();
-        CounterInit(30);
+        CounterInit(5);
 
         $("#timerPanel").hide();
         //Delete Previous Question
@@ -332,8 +334,9 @@ $("#nextButton").on("click", function() {
 
         } else {
             $("#questionPanel h3").html("Thanks for Playing!");
-            $("#startButton").prop("value", "Restart Game!");
-            $("#startButton").animate({
+            
+            CounterFreeze();
+            $("#restartButton").animate({
                 "opacity": "show",
                 top: "150"
             }, 1000);
