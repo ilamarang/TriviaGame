@@ -4,6 +4,9 @@ var questionCounter;
 var correctAnswer;
 var userSelectedTopic;
 var userChoice= {};
+var currentQuizScore = 0;
+var overallQuizScore = 0;
+var totalQuizCount = 0;
 var currentUserChoice = "";
 var questionArray = [];
 var questionList = {
@@ -183,12 +186,12 @@ var initialize = function() {
     questionCounter = 0;
     arrayCount = 0;
     currentUserChoice = "";
-
+    currentQuizScore = 0
     $("#timerPanel").hide();    
     $("#nextButton").hide();
     $("#restartButton").hide();
-    
-
+    $("#questionPanel h2").hide();
+    $(".answerPanel").hide();
 };
 
 //Dynamically display players based on the object List.
@@ -213,6 +216,7 @@ var displayQuizTopics = function(quiz) {
 var displayNextQuestion = function() {
 
     $("#questionPanel").hide();
+    $(".answerPanel").hide();
     userChoice = questionList[userSelectedTopic];
     
     $("#questionPanel h3").html(userChoice[questionArray[questionCounter]].question);
@@ -231,17 +235,16 @@ var displayNextQuestion = function() {
 
 };
 
+
+
 var verifyAnswer = function() {
-
-     
-
-  
+       
   console.log(currentUserChoice);
   console.log(userChoice[questionArray[questionCounter - 1]]);
 
   if (userChoice[questionArray[questionCounter - 1]].choiceGroup[userChoice[questionArray[questionCounter - 1]].answer] === currentUserChoice) 
   {
-    console.log("HORRAY");
+    currentQuizScore++;
   }
    else
    {
@@ -297,14 +300,17 @@ $(document).ready(function() {
 
                     }
         $("#quizTopics").hide();
-        $("#nextButton").show();
+        //$("#nextButton").show();
 
         $('#nextButton').trigger('click');
+        totalQuizCount++;
     });
 
     $("#choiceList").on("click", "input", function(){
 
-    	currentUserChoice = $(this)[0].value;   	
+    	currentUserChoice = $(this)[0].value; 
+
+        $(".answerPanel").show();  	
         	
     });
 
@@ -314,12 +320,14 @@ $("#nextButton").on("click", function() {
 
         if(currentUserChoice.length > 0) 
         {
-            verifyAnswer();    
+            verifyAnswer(); 
+                   
         }
         
+
         
         CounterFreeze();
-        CounterInit(5);
+        CounterInit(10);
 
         $("#timerPanel").hide();
         //Delete Previous Question
@@ -334,7 +342,10 @@ $("#nextButton").on("click", function() {
 
         } else {
             $("#questionPanel h3").html("Thanks for Playing!");
-            
+            overallQuizScore = overallQuizScore + currentQuizScore;
+            $("#questionPanel h2").html("Results  <br> " + "Current Quiz Score " + currentQuizScore + "/4  <br>" + "Total Quiz Attempted: " + totalQuizCount + "<br> Overall Quiz Score: " + overallQuizScore + "/" + 4*totalQuizCount);
+            $("#questionPanel h2").show();
+
             CounterFreeze();
             $("#restartButton").animate({
                 "opacity": "show",
