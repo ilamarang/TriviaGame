@@ -1,0 +1,18 @@
+.img-responsive{
+    cursor: pointer;
+    float:left;
+    
+}
+body {
+
+	background-image: url("../images/cork-wallet.png");
+}
+
+span {
+	margin-left: 3em;
+}
+
+label {
+
+	font-size: 1.5em;
+}
