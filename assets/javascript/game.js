@@ -433,22 +433,14 @@ $(document).ready(function() {
     $(function () {
     var body = $(".panel");
     var backgrounds = [
-      'url(./assets/images/1_4.jpg)', 
-      'url(./assets/images/1_2.jpg)', 
-      'url(./assets/images/1_3.jpg)', 
-      'url(./assets/images/1_4.jpg)', 
-      'url(./assets/images/2.jpg)', 
-      'url(./assets/images/2_2.jpg)', 
-      'url(./assets/images/3.jpg)', 
-      'url(./assets/images/3_2.jpg)', 
-      'url(./assets/images/4.jpg)', 
-      'url(./assets/images/4_2.jpg)', 
-      'url(./assets/images/5.jpg)', 
-      'url(./assets/images/5_2.jpg)', 
-      'url(./assets/images/6.jpg)', 
-      'url(./assets/images/6_2.jpg)', 
-      'url(./assets/images/7.jpg)', 
-      'url(./assets/images/7_2.jpg)'
+    'url(./assets/images/nature.jpg)',
+      'url(./assets/images/Tree2.jpeg)', 
+       'url(./assets/images/Tree3.jpg)', 
+       
+     
+      'url(./assets/images/Tree6.jpg)', 
+      'url(./assets/images/Tree7.jpeg)', 
+      'url(./assets/images/nature.jpg)'
 
       ];
     var current = 0;
@@ -458,10 +450,10 @@ $(document).ready(function() {
             'background',
         backgrounds[current = ++current % backgrounds.length]);
 
-        //setTimeout(nextBackground, 5000);
+        setTimeout(nextBackground, 5000);
     }
-    //setTimeout(nextBackground, 5000);
-    //body.css('background', backgrounds[0]);
+    setTimeout(nextBackground, 5000);
+    body.css('background', backgrounds[0]);
 });
 
 });
