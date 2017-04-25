@@ -415,7 +415,7 @@ $(document).ready(function() {
             $(".answerPanel").hide();
             $("#questionPanel h3").html("Thanks for Playing!");
             overallQuizScore = overallQuizScore + currentQuizScore;
-            $("#questionPanel h2").html("Results  <br> " + "Current Quiz Score " + currentQuizScore + "/4  <br>" + "Total Quiz Attempted: " + totalQuizCount + "<br> Overall Quiz Score: " + overallQuizScore + "/" + 4 * totalQuizCount);
+            $("#questionPanel h2").html(" <u> Results</u>  <br><br> " + "Current Quiz Score " + currentQuizScore + "/4  <br><br>" + "Total Quiz Attempted: " + totalQuizCount + "<br><br> Overall Quiz Score: " + overallQuizScore + "/" + 4 * totalQuizCount);
             $("#questionPanel h2").show();
 
             CounterFreeze();
