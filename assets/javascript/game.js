@@ -16,7 +16,7 @@ var questionList = {
     "Music": {
         "property": {
             displayName: "Music",
-            imageLocation: "./assets/images/Adele.jpg"
+            imageLocation: "./assets/images/treble.png"
         },
 
         "Question1": {
@@ -69,6 +69,8 @@ var questionList = {
         "Question1": {
             question: "How many people serve in Congress?",
             choiceGroup: ["475", "100", "250", "535"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/Congress.jpg",
             answer: 3,
             answerDetails: 5,
             answerPicLocation: "Hi"
@@ -79,6 +81,8 @@ var questionList = {
             question: " 'We The People' opening of which founding document?",
 
             choiceGroup: ["The Declaration of Independence", "The Bill of Rights", "The Constitution", "Obamacare"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/us-constitution.jpg",
             answer: 2,
             answerDetails: 5,
             answerPicLocation: "Hi"
@@ -88,6 +92,8 @@ var questionList = {
             question: "How many Supreme Court justices are there?",
 
             choiceGroup: ["8", "9", "11", "12"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/supremeCourt.jpg",
             answer: 2,
             answerDetails: 5,
             answerPicLocation: "Hi"
@@ -96,6 +102,8 @@ var questionList = {
         "Question4": {
             question: "Who drafted the U.S. Declaration of Independence",
             choiceGroup: ["George Washington", "King George III", "Thomas Jefferson", "Abraham Lincoln"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/Independence.jpg",
             answer: 2,
             answerDetails: 5,
             answerPicLocation: "Hi"
@@ -109,36 +117,44 @@ var questionList = {
         },
 
         "Question1": {
-            question: "Movies",
-            choiceGroup: ["2", "3", "4", "5"],
-            answer: "Hi",
+            question: "For which film did Leonardo DiCaprio win his first Academy Award?",
+            choiceGroup: ["Trumbo", "The Revenant", "Steve Jobs", "The Martian"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/LeoDicap.jpeg",
+            answer: 1,
             answerDetails: 5,
             answerPicLocation: "Hi"
 
         },
 
         "Question2": {
-            question: "Question2",
+            question: "Angelina Jolie and Brad Pitt split after how many years of being together?",
 
-            choiceGroup: ["Meow", "Bow", "Oink", "Neigh"],
-            answer: "Hi",
+            choiceGroup: ["12", "9", "7", "15"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/AngPitt.jpeg",
+            answer: 0,
             answerDetails: 5,
             answerPicLocation: "Hi"
         },
 
         "Question3": {
-            question: "Question3",
+            question: "In which city was Kim Kardashian robbed at gunpoint on Oct. 3?",
 
-            choiceGroup: ["-15", "-90", "-20", "-40"],
-            answer: "Hi",
+            choiceGroup: ["Milan", "New York", "Paris", "London"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/Kim.jpeg",
+            answer: 2,
             answerDetails: 5,
             answerPicLocation: "Hi"
         },
 
         "Question4": {
-            question: "Question4",
-            choiceGroup: ["Hi", "How", "Yes", "Go"],
-            answer: "Hi",
+            question: "Who was named 'Sexiest Man Alive' 2016 by People Magazine",
+            choiceGroup: ["Leonardo Dicaprio", "Dwayne Johnson", "Tod Hiddleston", "Idris Elba"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/SexiestMan.jpeg",
+            answer: 1,
             answerDetails: 5,
             answerPicLocation: "Hi"
         }
@@ -151,35 +167,43 @@ var questionList = {
         },
 
         "Question1": {
-            question: "Sports",
+            question: "What boxer holds the record for youngest professional debut ",
 
-            choiceGroup: ["2", "3", "4", "5"],
-            answer: "Hi",
+            choiceGroup: ["Jack Dempsey", "Teddy Baldock", "Alberto Arizmendi", "Kid Laredo"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/Arizmendi.jpg",
+            answer: 2,
             answerDetails: 5,
             answerPicLocation: "Hi"
 
         },
 
         "Question2": {
-            question: "Question2",
-            choiceGroup: ["Meow", "Bow", "Oink", "Neigh"],
-            answer: "Hi",
+            question: "Who was the only person in NBA history to be named Most Valuable Player, Coach of the Year, and Executive of the Year",
+            choiceGroup: ["Larry Bird", "Michael Jordan", "Bill Russell", "Phil Jackson"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/Larry.jpg",
+            answer: 0,
             answerDetails: 5,
             answerPicLocation: "Hi"
         },
 
         "Question3": {
-            question: "Question3",
-            choiceGroup: ["-15", "-90", "-20", "-40"],
-            answer: "Hi",
+            question: "Who is the most decorated Olympian of all time",
+            choiceGroup: ["Paavo Nurmi", "Mary Lou Retton", "Michael Phelps", "Carl Lewis"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/Olympics.jpg",
+            answer: 2,
             answerDetails: 5,
             answerPicLocation: "Hi"
         },
 
         "Question4": {
-            question: "Question4",
-            choiceGroup: ["Hi", "How", "Yes", "Go"],
-            answer: "Hi",
+            question: "Which tennis player won 470 consecutive matches",
+            choiceGroup: ["Esther Vergeer", "Chris Evert", "Don Budge", "Billie Jean King"],
+            questionType: "pic",
+            questionFileLocation: "./assets/images/Esther.jpg",
+            answer: 0,
             answerDetails: 5,
             answerPicLocation: "Hi"
         }
@@ -190,7 +214,7 @@ var questionList = {
 
 var initialize = function() {
 
-    $("#questionPanel h3").html("Welcome to an Awesome Trivia!");
+    $("#questionPanel h3").html("Choose a Topic of your Choice!");
 
     questionCounter = 0;
     arrayCount = 0;
@@ -434,10 +458,10 @@ $(document).ready(function() {
             'background',
         backgrounds[current = ++current % backgrounds.length]);
 
-        setTimeout(nextBackground, 5000);
+        //setTimeout(nextBackground, 5000);
     }
-    setTimeout(nextBackground, 5000);
-    body.css('background', backgrounds[0]);
+    //setTimeout(nextBackground, 5000);
+    //body.css('background', backgrounds[0]);
 });
 
 });
