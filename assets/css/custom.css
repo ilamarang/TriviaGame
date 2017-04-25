@@ -39,3 +39,6 @@ label {
 	.btn {
 		background-color: black;
 	}
+.correctAnswerDiv {
+	color: blue;
+}
