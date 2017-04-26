@@ -233,7 +233,7 @@ var initialize = function() {
 var displayQuizTopics = function(quiz) {
     //console.log(player.name);
     //console.log(player.basePoints);
-    var $columnDisplay = $("<div class='col-md-3 col-sm-6'>");
+    var $columnDisplay = $("<div class='col-md-6 col-sm-6'>");
     var $thumbNailDisplay = $("<div class='col-xs-12 thumbnail text-center'>");
     var $responsiveImageDisplay = $("<img class='img-responsive' width='100%'>").attr("src", quiz["property"].imageLocation).attr("id", quiz["property"].displayName);
     var $captionDiv = $("<div class='caption'>")
@@ -303,6 +303,7 @@ var verifyAnswer = function() {
 
 }
 
+//handle the timeout action triggered when the interval automatically cl
 var handleTimeOut = function() {
 
 
@@ -407,8 +408,6 @@ $(document).ready(function() {
 
         }
 
-
-
         CounterFreeze();
         CounterInit(5);
 
@@ -444,11 +443,18 @@ $(document).ready(function() {
 
     });
 
+    //Function to automatically modify the background skin
+
     $(function () {
     var body = $(".panel");
     var backgrounds = [
+    'url(./assets/images/Tree4.jpg)',
+    'url(./assets/images/Tree5.jpg)',
+    'url(./assets/images/Tree3.jpg)', 
+    'url(./assets/images/Tree10.jpg)', 
+    'url(./assets/images/Tree9.jpg)',  
     'url(./assets/images/nature.jpg)',      
-       'url(./assets/images/Tree3.jpg)',            
+                  
        
       'url(./assets/images/Tree7.jpeg)',
         
