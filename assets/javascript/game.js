@@ -260,7 +260,7 @@ var displayNextQuestion = function() {
     currentUserChoice = "";
     userChoice = questionList[userSelectedTopic];
 
-    $("#questionPanel h3").html(userChoice[questionArray[questionCounter]].question );
+    $("#questionPanel h3").html(userChoice[questionArray[questionCounter]].question);
     if (userChoice[questionArray[questionCounter]].questionType == "pic") {
         var $questionImage = $("<img class='img-responsive' width='100%'>").attr("src", userChoice[questionArray[questionCounter]].questionFileLocation);
         $questionImage.appendTo($(".questionPic"));
@@ -268,12 +268,12 @@ var displayNextQuestion = function() {
 
     for (i = 0; i < userChoice[questionArray[questionCounter]].choiceGroup.length; i++) {
 
-        if (userChoice[questionArray[questionCounter]].answer===i) {
+        if (userChoice[questionArray[questionCounter]].answer === i) {
             var radioChoice = '<div class="radio"> <label> <input type="radio" name="answer" value="' + userChoice[questionArray[questionCounter]].choiceGroup[i] + '" >' + userChoice[questionArray[questionCounter]].choiceGroup[i] + "<span id='symbol'>" + '</label>';
-        }else {
+        } else {
             var radioChoice = '<div class="radio"> <label> <input type="radio" name="answer" value="' + userChoice[questionArray[questionCounter]].choiceGroup[i] + '" >' + userChoice[questionArray[questionCounter]].choiceGroup[i] + "<span id='symbol'>" + '</label>';
         }
-        
+
 
         $("#choiceList").append(radioChoice).fadeIn;
     }
@@ -297,7 +297,7 @@ var verifyAnswer = function() {
 
 
     if (userChoice[questionArray[questionCounter - 1]].choiceGroup[userChoice[questionArray[questionCounter - 1]].answer] === currentUserChoice) {
-        currentQuizScore++;      
+        currentQuizScore++;
 
     }
 
@@ -311,11 +311,11 @@ var handleTimeOut = function() {
 
 }
 
-$(".correctAnswerDiv").hide(); 
+$(".correctAnswerDiv").hide();
 
 $(document).ready(function() {
 
-       
+
 
     $("#restartButton").on("click", function() {
 
@@ -333,7 +333,7 @@ $(document).ready(function() {
         }
     }
 
-
+    //Function to choose the topic and get the corresponding questions.
     $(".img-responsive").on("click", function() {
 
         userSelectedTopic = $(this).attr("id");
@@ -355,10 +355,10 @@ $(document).ready(function() {
 
     $("#choiceList").on("click", "input", function() {
         $(":radio").prop("disabled", true);
-        
+
         if (currentUserChoice === "") {
             currentUserChoice = $(this)[0].value;
-            
+
             var $correctAnswerHeading = $("<h4>");
 
             $(".answerPanel").show();
@@ -385,13 +385,13 @@ $(document).ready(function() {
             $($answerDetails).html(userChoice[questionArray[questionCounter - 1]].answerDetails);
 
             console.log($answerDetails);
-            
-            
-            $correctAnswerHeading.appendTo($("#correctAnswerPanel"));    
+
+
+            $correctAnswerHeading.appendTo($("#correctAnswerPanel"));
 
             $answerImage.appendTo($("#correctAnswerPanel"));
 
-            
+
             $("#correctAnswerPanel").append(userChoice[questionArray[questionCounter - 1]].answerDetails);
             $(".correctAnswerDiv").show();
         }
@@ -400,6 +400,7 @@ $(document).ready(function() {
 
     });
 
+    //Triggered event to change the next question automatically.
     $("#nextButton").on("click", function() {
 
         if (currentUserChoice.length > 0) {
@@ -445,38 +446,35 @@ $(document).ready(function() {
 
     //Function to automatically modify the background skin
 
-    $(function () {
-    var body = $(".panel");
-    var backgrounds = [
-    'url(./assets/images/Tree10.jpg)',
-    'url(./assets/images/Tree4.jpg)',
-    'url(./assets/images/Tree5.jpg)',
-    'url(./assets/images/Tree3.jpg)', 
-     
-    'url(./assets/images/Tree9.jpg)',  
-    'url(./assets/images/nature.jpg)',      
-                  
-       
-      'url(./assets/images/Tree7.jpeg)',
-        
-      'url(./assets/images/nature.jpg)'
+    $(function() {
+        var body = $(".panel");
+        var backgrounds = [
+            'url(./assets/images/Tree10.jpg)',
+            'url(./assets/images/Tree4.jpg)',
+            'url(./assets/images/Tree5.jpg)',
+            'url(./assets/images/Tree3.jpg)',
 
-      ];
+            'url(./assets/images/Tree9.jpg)',
+            'url(./assets/images/nature.jpg)',
 
-    var current = 0;
-    function nextBackground() {
-        body.css(
-            'background',
-        backgrounds[current = ++current % backgrounds.length]);
 
+            'url(./assets/images/Tree7.jpeg)',
+
+            'url(./assets/images/nature.jpg)'
+
+        ];
+
+        var current = 0;
+
+        function nextBackground() {
+            body.css(
+                'background',
+                backgrounds[current = ++current % backgrounds.length]);
+
+            setTimeout(nextBackground, 5000);
+        }
         setTimeout(nextBackground, 5000);
-    }
-    setTimeout(nextBackground, 5000);
-    body.css('background', backgrounds[0]);
-});
-
-
+        body.css('background', backgrounds[0]);
+    });
 
 });
-
-
