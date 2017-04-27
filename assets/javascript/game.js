@@ -449,9 +449,10 @@ $(document).ready(function() {
     $(function() {
         var body = $(".panel");
         var backgrounds = [
+            'url(./assets/images/Tree5.jpg)',
             'url(./assets/images/Tree10.jpg)',
             'url(./assets/images/Tree4.jpg)',
-            'url(./assets/images/Tree5.jpg)',
+            
             'url(./assets/images/Tree3.jpg)',
 
             'url(./assets/images/Tree9.jpg)',
